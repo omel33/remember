@@ -2,11 +2,14 @@ package metodclass;
 
 public class Main {
     public static void main(String[] args) {
-        Calc calc = new Calc();
-        double circleArea = calc.calculateCircleArea(5.0);
-        calc.printArea("Circle", circleArea);
+        double circleArea = AreaCalculator.calculateCircleArea(5.0);
+        System.out.println("Circle area: " + circleArea);
 
-        double rectangleArea = calc.calculateRectangleArea(4.0, 6.0);
-        calc.printArea("Rectangle", rectangleArea);
+        double rectangleArea = AreaCalculator.calculateRectangleArea(4.0, 6.0);
+        System.out.println("Rectangle area: " + rectangleArea);
+
+        AreaCalculator.printArea("Circle", circleArea);
+        AreaCalculator.printArea("Rectangle", rectangleArea);
+
     }
 }
