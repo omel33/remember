@@ -13,10 +13,7 @@ public class Student {
         this.gradePointAverage = gradePointAverage;
     }
     public Student(String name, String studentId) {
-        int age = 18;
-        this.name = name;
-        double gradePointAverage = 0.0;
-        this.studentId = studentId;
+        this(name, 18, studentId, 0.0);
     }
     public String getName() {
         return name;
@@ -34,7 +31,7 @@ public class Student {
         this.name = name;
     }
     public void setAge(int age) {
-        if (age < 0 && age > 150) {
+        if (age < 0 || age > 150) {
             System.out.println("Invalid age");
             return;
         }
