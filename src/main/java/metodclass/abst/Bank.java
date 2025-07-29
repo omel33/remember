@@ -54,5 +54,7 @@ public class Bank {
         }
         System.out.println("\n--- Всі операції завершено ---");
         System.out.println("Фінальний баланс рахунку: " + account.getBalance());
+        System.out.println("Дякуємо за використання нашої банківської системи!");
     }
+
 }
