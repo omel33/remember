@@ -1,6 +1,6 @@
 package metodclass;
 
-public class Car extends  Vehicle{
+public class  Car extends  Vehicle{
     private int numDoors;
     private double fuelConsumptionLitersPer100Km;
 
