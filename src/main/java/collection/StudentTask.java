@@ -4,6 +4,8 @@ import java.util.*;
 
 public class StudentTask {
     public static void main(String[] args) {
+        int year = 2023;
+        System.out.println("Student Task for " + year);
         List<String> taskList = new ArrayList<>();
         taskList.add("Create a presentation");
         taskList.add("Planing meeting");
