@@ -30,6 +30,7 @@ public class StudentController {
         studentsGrades.put(new Student("John", 1), 90.0);
         System.out.println(studentsGrades);
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         for (Map.Entry<Student, Double> entry : studentsGrades.entrySet()){
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
