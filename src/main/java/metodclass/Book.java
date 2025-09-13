@@ -1,6 +1,6 @@
 package metodclass;
 
-public class Book {
+  class Book {
     String title;
     String author;
     int publishYear;
