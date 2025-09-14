@@ -1,5 +1,8 @@
 package topic1.Day6;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class Main {
     public static void main(String[] args) {
         Car car1 = new Car("BMW", 2015, 10000);
@@ -12,5 +15,7 @@ public class Main {
         System.out.println("New balance: " + account1.getBalance());
         account1.withdraw(200.0);
         System.out.println("New balance: " + account1.getBalance());
+        HashSet <Car> carSet = new HashSet<>();
+        ArrayList <Car> carList = new ArrayList<>();
     }
 }
