@@ -69,5 +69,9 @@ public class LibraryService {
         return result;
 
     }
+    public Book getBookById(int id){
+        for (Book b : books) if(b.getId()== id) return b;
+        return null;
+    }
 
 }
