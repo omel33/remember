@@ -1,14 +1,16 @@
 package topic1.library.model;
 
+import topic1.library.Genre;
+
 public class Book {
     private int id;
     private String title;
     private String author;
     private int year;
-    private String genre;
+    private Genre genre;
     private int availableCopies;
 
-    public Book(int id, String title, String author, int year, String genre, int availableCopies) {
+    public Book(int id, String title, String author, int year,Genre genre,  int availableCopies) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -41,10 +43,10 @@ public class Book {
     public void setYear(int year) {
         this.year = year;
     }
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
-    public void setGenre(String genre) {
+    public void setGenre(Genre  genre) {
         this.genre = genre;
     }
     public int getAvailableCopies() {

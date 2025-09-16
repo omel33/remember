@@ -1,5 +1,6 @@
 package topic1.library.app;
 
+import topic1.library.Genre;
 import topic1.library.model.Book;
 import topic1.library.model.User;
 import topic1.library.service.LibraryService;
@@ -23,8 +24,8 @@ public class App {
     }
 
     private void seed() {
-        library.addBook(new Book(1, "It", "Stephen King", 1986, "Horror", 1));
-        library.addBook(new Book(2, "Clean Code", "Robert C. Martin", 2008, "Programming", 2));
+        library.addBook(new Book(1, "It", "Stephen King", 1986, Genre.HORROR, 1));
+        library.addBook(new Book(2, "Clean Code", "Robert C. Martin", 2008, Genre.PROGRAMMING, 2));
         users.addUser(new User(1, "Mike", "mike@gmail.com"));
         users.addUser(new User(2, "Jane", "jane@gmail.com"));
     }
@@ -77,7 +78,7 @@ public class App {
         System.out.print("Year: "); int year = readInt();
         System.out.print("Genre: "); String genre = sc.nextLine();
         System.out.print("Available copies: "); int copies = readInt();
-        library.addBook(new Book(id, title, author, year, genre, copies));
+        library.addBook(new Book(id, title, author, year, Genre.valueOf(genre), copies));
         System.out.println("Added.");
     }
 
@@ -88,7 +89,9 @@ public class App {
             case 1 -> { System.out.print("Title: "); printBooks(library.findByTitle(sc.nextLine())); }
             case 2 -> { System.out.print("Author: "); printBooks(library.findByAuthor(sc.nextLine())); }
             case 3 -> { System.out.print("Year: "); printBooks(library.findByYear(readInt())); }
-            case 4 -> { System.out.print("Genre: "); printBooks(library.findByGenre(sc.nextLine())); }
+            case 4 -> {System.out.print("Genre: ");
+                Genre g = parseGenre(sc.nextLine());
+                printBooks(library.findByGenre(g)); }
             default -> System.out.println("Unknown");
         }
     }
@@ -152,6 +155,14 @@ public class App {
         int val = sc.nextInt();
         sc.nextLine(); // з’їсти \n
         return val;
+    }
+    private Genre parseGenre(String input) {
+        String norm = input.trim().toUpperCase();
+        for (Genre g : Genre.values()) {
+            if (g.name().equals(norm)) return g;
+        }
+        System.out.println("Unknown genre '" + input + "'. Defaulting to CLASSIC.");
+        return Genre.CLASSIC;
     }
 
     private void printBooks(List<Book> list) {

@@ -2,10 +2,10 @@ package topic1.day9;
 
 public class Computer {
     void print(){
-        String MassageService="Massage Service";
+        String massageService="Massage Service";
         class Printer{
             void printMessage(){
-                System.out.println("Printer say: "+MassageService);
+                System.out.println("Printer say: "+massageService);
             }
 
         }

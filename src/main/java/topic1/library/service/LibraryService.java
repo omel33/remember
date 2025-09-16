@@ -1,6 +1,7 @@
 package topic1.library.service;
 
 
+import topic1.library.Genre;
 import topic1.library.model.Book;
 
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryService {
-  List<Book> books;
+  private List<Book> books;
 
     public LibraryService() {
         books = new ArrayList<>();
@@ -50,10 +51,10 @@ public class LibraryService {
         }
         return result;
     }
-    public List<Book> findByGenre(String genre) {
+    public List<Book> findByGenre(Genre g) {
        List<Book> result = new ArrayList<>();
        for (Book book : books){
-           if (book.getGenre().equalsIgnoreCase(genre)) {
+           if (book.getGenre().equals(g)) {
                result.add(book);
            }
        }
