@@ -1,5 +1,6 @@
 package topic1.day12;
 
+@MyAnnotation(author = "Omelko", version = 2.0)
 public class Car {
     private String brand;
     private int year;
@@ -8,24 +9,7 @@ public class Car {
         this.brand = brand;
         this.year = year;
     }
-    private Car() {
-        this.brand = "HiddenTesla";
-        this.year = 9999;
-    }
-    private Car(String brand) {
-        this.brand = brand;
-        this.year = -1; // або будь-яке значення
-    }
 
-    public void drive() {
-        System.out.println("Driving a " + brand + " car.");
-    }
-    private String secretInfo() {
-        return "This is a secret car: " + brand + " (" + year + ")";
-    }
-    private void increaseYear(int n) {
-        this.year += n;
-    }
 
     @Override
     public String toString() {
