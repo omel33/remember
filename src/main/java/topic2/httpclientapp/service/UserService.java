@@ -13,7 +13,11 @@ public class UserService extends HttpService{
         try {
             var resp=get("https://jsonplaceholder.typicode.com/users");
             List<User> users=mapper.readValue(resp.body(), new TypeReference<>(){});
-            users.forEach(System.out::println);
+            System.out.println("\n=== Users ===");
+            for(User u:users){
+                String city=(u.address!=null?u.address.city:"-");
+                System.out.printf("#%-2d %-25s %-25s %-15s%n", u.id, u.name, u.email, city);
+            }
         }catch (Exception e){
             System.out.println("Error "+e.getMessage());
         }
@@ -25,7 +29,16 @@ public class UserService extends HttpService{
             users.stream()
                     .filter(u->u.email.equalsIgnoreCase(email))
                     .findFirst()
-                    .ifPresent(System.out::println) ;System.out.println("User found");
+                    .ifPresent(u -> {
+                        String city=(u.address!=null?u.address.city:"-");
+                        System.out.println("""
+                         Found user:
+                         id:    %d
+                         name:  %s
+                         email: %s
+                         city:  %s
+                         """.formatted(u.id, u.name, u.email, city));
+                    }) ;System.out.println("User found");
         }catch (Exception e){
             System.out.println("Error "+e.getMessage());
         }

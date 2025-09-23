@@ -25,28 +25,56 @@ public class App {
             System.out.print("Choose: ");
             int cmd = Integer.parseInt(sc.nextLine());
 
-            switch (cmd) {
-                case 1 -> userService.listUser();
-                case 2 -> {
-                    System.out.print("Email: ");
-                    String email = sc.nextLine();
-                    userService.findByEmail(email);
+            try {
+
+
+                switch (cmd) {
+                    case 1 -> userService.listUser();
+                    case 2 -> {
+                        String email = readNonEmpty("Email: ");
+                        userService.findByEmail(email);
+
+                    }
+                    case 3 -> {
+                        int userId = readInt("UserId: ");
+                        postService.listPostByUser(userId);
+                    }
+                    case 4 -> {
+                        String title = readNonEmpty("Title: ");
+                        String body = readNonEmpty("Body: ");
+                        int userId = readInt("UserId (default 1 — просто введи 1): ");
+                        postService.createPost(title, body, userId);
+                    }
+                    case 5 -> postService.printUsersWithPostCount();
+                    case 0 -> {
+                        System.out.println("Bye!");
+                        return;
+                    }
+                    default -> System.out.println("Unknown");
                 }
-                case 3 -> {
-                    System.out.print("UserId: ");
-                    int userId = Integer.parseInt(sc.nextLine());
-                    postService.listPostByUser(userId);
-                }
-                case 4 -> {
-                    System.out.print("Title: ");
-                    String title = sc.nextLine();
-                    System.out.print("Body: ");
-                    String body = sc.nextLine();
-                    postService.createPost(title, body, 1);
-                }
-                case 0 -> { System.out.println("Bye!"); return; }
-                default -> System.out.println("Unknown");
+            }catch (Exception e){
+                System.out.println("Error: " + e.getMessage());
             }
+        }
+    }
+    private int readInt(String prompt){
+        while ( true){
+            System.out.println( prompt);
+            String s=sc.nextLine().trim();
+            try {
+                return Integer.parseInt(s);
+
+            }catch (NumberFormatException e){
+                System.out.println("Будь ласка, введи ціле число. Ти ввів: \"" + s + "\"");
+            }
+        }
+    }
+    private String readNonEmpty(String prompt){
+        while ( true){
+            System.out.println( prompt);
+            String s=sc.nextLine().trim();
+            if (!s.isEmpty()) return s;
+            System.out.println("Значення не може бути порожнім.");
         }
     }
 }
