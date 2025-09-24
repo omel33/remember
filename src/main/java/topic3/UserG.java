@@ -2,10 +2,12 @@ package topic3;
 
 public class UserG {
     String name;
+    String city;
     int age;
 
-    public UserG(String name, int age) {
+    public UserG(String name,String city, int age) {
         this.name = name;
+        this.city = city;
         this.age = age;
     }
     public void setName(String name) {
@@ -19,5 +21,19 @@ public class UserG {
     }
     public int getAge() {
         return age;
+    }
+    public void setCity(String city) {
+        this.city = city;
+    }
+    public String getCity() {
+        return city;
+    }
+    @Override
+    public String toString() {
+        return "UserG{" +
+                "name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

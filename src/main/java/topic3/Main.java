@@ -17,8 +17,6 @@ public class Main {
         Function<String, String> toSnakeCase=s -> s.replaceAll("\\s", "_");
         Function<String, String> toSnakeCaseAndNormalize=norm.andThen(collapseSpaces).andThen(toSnakeCase);
 
-        UserG user=new UserG("  jOMN  ", 42);
-        UserG user2=new UserG("  Iond  ", 32);
-        Comparator<UserG> byName=Comparator.comparing(UserG::getName);
+
     }
 }

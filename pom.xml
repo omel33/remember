@@ -22,7 +22,11 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.40</version>
+        </dependency>
         <!-- Jackson (для JSON у наступній темі) -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
