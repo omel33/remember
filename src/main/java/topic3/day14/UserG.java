@@ -1,4 +1,4 @@
-package topic3;
+package topic3.day14;
 
 public class UserG {
     String name;
