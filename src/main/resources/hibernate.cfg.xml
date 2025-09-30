@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- JDBC -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">root</property>
+
+        <!-- Діалект -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+        <!-- DDL авто (тільки для dev). Можеш почати з update -->
+        <property name="hibernate.hbm2ddl.auto=validate">update</property>
+
+        <!-- SQL у лог -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Кеш 1 рівня завжди увімкнений; 2-й рівень не чіпаємо зараз -->
+
+        <!-- Реєструємо сутності (клас із @Entity) -->
+        <mapping class="topic5_Hibern.dto.AppUser"/>
+
+    </session-factory>
+</hibernate-configuration>
