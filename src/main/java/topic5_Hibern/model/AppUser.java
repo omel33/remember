@@ -1,8 +1,10 @@
-package topic5_Hibern.dto;
+package topic5_Hibern.model;
 
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "app_user",uniqueConstraints = @UniqueConstraint(name = "uk_app_user_email", columnNames = "email"))
@@ -21,11 +23,22 @@ public class AppUser {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt= LocalDateTime.now();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CustomerOrder> orders=new ArrayList<>();
+
     public AppUser() {
     }
     public AppUser(String email, String fullName) {
         this.email = email;
         this.fullName = fullName;
+    }
+    public void addOrder(CustomerOrder o) {
+        orders.add(o);
+        o.setUser(this);
+    }
+    public void removeOrder(CustomerOrder o) {
+        orders.remove(o);
+        o.setUser(null);
     }
     public Long getId() {
         return id;
@@ -48,6 +61,8 @@ public class AppUser {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+    public List<CustomerOrder> getOrders() { return orders; }
+
     @Override
     public String toString() {
         return "AppUser{" +

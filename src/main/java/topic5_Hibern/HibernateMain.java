@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import topic5_Hibern.dto.AppUser;
+import topic5_Hibern.model.AppUser;
 
 public class HibernateMain {
 

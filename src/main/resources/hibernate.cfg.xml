@@ -14,16 +14,17 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
         <!-- DDL авто (тільки для dev). Можеш почати з update -->
-        <property name="hibernate.hbm2ddl.auto=validate">update</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- SQL у лог -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
         <!-- Кеш 1 рівня завжди увімкнений; 2-й рівень не чіпаємо зараз -->
-
+        <property name="hibernate.default_schema">public</property>
         <!-- Реєструємо сутності (клас із @Entity) -->
-        <mapping class="topic5_Hibern.dto.AppUser"/>
+        <mapping class="topic5_Hibern.model.AppUser"/>
+        <mapping class="topic5_Hibern.model.CustomerOrder"/>
 
     </session-factory>
 </hibernate-configuration>
