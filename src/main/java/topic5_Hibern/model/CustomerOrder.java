@@ -35,6 +35,27 @@ public class CustomerOrder {
 
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST}) // без REMOVE!
+    @JoinTable(
+            name = "order_tag",
+            joinColumns = @JoinColumn(name = "order_id", foreignKey = @ForeignKey(name = "fk_order_tag_order")),
+            inverseJoinColumns = @JoinColumn(name = "tag_id", foreignKey = @ForeignKey(name = "fk_order_tag_tag")),
+            uniqueConstraints = @UniqueConstraint(name = "uk_order_tag", columnNames = {"order_id","tag_id"})
+    )
+    private java.util.Set<Tag> tags = new java.util.HashSet<>();
+
+
+
+    public java.util.Set<Tag> getTags() { return tags; }
+
+    public void addTag(Tag t) {
+        tags.add(t);
+        t.getOrders().add(this);
+    }
+    public void removeTag(Tag t) {
+        tags.remove(t);
+        t.getOrders().remove(this);
+    }
 
     public Long getId() {
         return id;

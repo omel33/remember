@@ -25,6 +25,9 @@
         <!-- Реєструємо сутності (клас із @Entity) -->
         <mapping class="topic5_Hibern.model.AppUser"/>
         <mapping class="topic5_Hibern.model.CustomerOrder"/>
+        <mapping class="topic5_Hibern.model.Tag"/>
+        <mapping class="topic5_Hibern.model.OrderTag"/>
+        <mapping class="topic5_Hibern.model.Address"/>
 
     </session-factory>
 </hibernate-configuration>

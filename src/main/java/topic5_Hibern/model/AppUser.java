@@ -25,6 +25,11 @@ public class AppUser {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CustomerOrder> orders=new ArrayList<>();
+    @Embedded
+    private Address address;
+
+    public Address getAddress() { return address; }
+    public void setAddress(Address a) { this.address = a; }
 
     public AppUser() {
     }
