@@ -12,7 +12,7 @@ public class DataSourceProvider {
     public static DataSource get() {
         if (ds == null) {
             Properties p = new Properties();
-            try (var in = DataSourceProvider.class.getResourceAsStream("/application.properties")){
+            try (var in = DataSourceProvider.class.getResourceAsStream("/src/application.properties")){
                 p.load(in);
 
             }catch (Exception e){
