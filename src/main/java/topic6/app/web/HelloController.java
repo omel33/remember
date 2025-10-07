@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     private static final Logger log= LoggerFactory.getLogger(HelloController.class);
 
-    @GetMapping("/api/hello")
+    @GetMapping("/hello")
     public String hello() {
         log.info("GET /api/hello called");
         return "Hello, Spring!";
