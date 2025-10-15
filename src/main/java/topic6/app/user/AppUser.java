@@ -1,41 +1,54 @@
 package topic6.app.user;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "app_user", uniqueConstraints = {
-        @UniqueConstraint(name = "uk_app_user_email", columnNames = "email")
-})
-@Getter
-@Setter
+@Table(name = "app_user")
 public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, updatable = true)
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String fullName;
-    @Column(nullable = false, updatable = false)
-    private Instant createdAt;
 
-    @PrePersist
-    void prePersist() {
-        createdAt = Instant.now();
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+
+    public Long getId() {
+        return id;
     }
-    public AppUser() {
+
+    public void setId(Long id) {
+        this.id = id;
     }
-    public AppUser(String email, String fullName) {
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
