@@ -1,9 +1,6 @@
-package topic6.app.service;
+package topic6.app.user;
 
 import org.springframework.stereotype.Service;
-import topic1.library.app.App;
-import topic6.app.user.AppUser;
-import topic6.app.user.AppUserRepository;
 
 import java.util.List;
 
