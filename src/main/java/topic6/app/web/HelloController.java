@@ -17,10 +17,10 @@ public class HelloController {
         log.info("GET /api/hello called");
         return "Hello, Spring!";
     }
-    @Value("${app.environment}")
-    private String env;
+    @Value("${app.environment:DEV}")
+    private String environment;
     @GetMapping("/env")
     public String currentEnv() {
-        return "Current profile: " + env;
+        return "Current profile: " + environment;
     }
 }
