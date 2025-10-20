@@ -1,6 +1,10 @@
 package topic6.app.user;
 
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import topic6.app.user.dto.AppUserDto;
 
@@ -11,6 +15,7 @@ import static topic6.app.user.AppUserMapper.*;
 @RestController
 @RequestMapping("/api/users")
 public class AppUserController {
+
     private final AppUserService service;
 
     public AppUserController(AppUserService service) {
@@ -19,7 +24,9 @@ public class AppUserController {
 
     @GetMapping
     public List<AppUserDto> getAll() {
-        return service.getAll().stream().map(AppUserMapper::toDto).toList();
+        return service.getAll().stream()
+                .map(AppUserMapper::toDto)
+                .toList();
     }
 
     @GetMapping("/{id}")
@@ -40,5 +47,20 @@ public class AppUserController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         service.delete(id);
+    }
+
+    @GetMapping("/search")
+    public List<AppUserDto> searchByName(@RequestParam String name) {
+        return service.searchByName(name);
+    }
+
+    @GetMapping("/paged")
+    public Page<AppUserDto> getUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "id") String sortBy
+    ) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return service.getAll(pageable);
     }
 }

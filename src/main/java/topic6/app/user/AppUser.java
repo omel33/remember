@@ -17,6 +17,12 @@ public class AppUser {
     @Column(nullable = false)
     private String fullName;
 
+    @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false)
+    private Integer age;
+
     private LocalDateTime createdAt = LocalDateTime.now();
 
 
@@ -50,5 +56,22 @@ public class AppUser {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
