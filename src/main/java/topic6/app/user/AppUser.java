@@ -23,7 +23,29 @@ public class AppUser {
     @Column(nullable = false)
     private Integer age;
 
+    @Column(nullable = false)
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Column(nullable = false)
+    private String role = "USER";
     private LocalDateTime createdAt = LocalDateTime.now();
+
 
 
     public Long getId() {

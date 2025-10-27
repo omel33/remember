@@ -13,6 +13,18 @@ public class AppUserDto {
     @Size(max = 255, message = "Full name is too long")
     private String fullName;
 
+    @NotBlank(message = "Password is required")
+    @Size(min = 4, message = "Password must be at least 4 characters")
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }

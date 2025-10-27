@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import topic6.app.user.dto.AppUserDto;
 
@@ -62,5 +63,12 @@ public class AppUserController {
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
         return service.getAll(pageable);
+    }
+
+    @PostMapping("/register")
+    public AppUserDto register(@Valid @RequestBody AppUserDto dto) {
+        AppUser user= toEntity(dto);
+        user.setPassword(new BCryptPasswordEncoder().encode(dto.getPassword()));
+        return toDto(service.create(user));
     }
 }
